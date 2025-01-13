@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Salesforce Web-to-Case Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form label {
+      align-self: flex-start;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    form input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 15px;
+      }
+
+      form label {
+        font-size: 14px;
+      }
+
+      form input[type="text"],
+      form input[type="email"],
+      form textarea,
+      form select {
+        font-size: 13px;
+        padding: 8px;
+      }
+
+      form input[type="submit"] {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+    
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
+    <h1>General Enquiry</h1>
+    <input type="hidden" name="orgid" value="00DJ9000000PeNb">
+    <input type="hidden" name="retURL" value="https://als-sa.co.za/">
+
+    <label for="00NJ9000006yj7n">Name & Surname</label>
+    <input id="00NJ9000006yj7n" name="00NJ9000006yj7n" maxlength="80" type="text" placeholder="Enter your name" />
+
+    <label for="00NJ9000007MMFV">Phone</label>
+    <input id="00NJ9000007MMFV" maxlength="40" name="00NJ9000007MMFV" type="text" placeholder="Enter your phone number" />
+
+    <label for="00NJ9000007MMFf">Email</label>
+    <input id="00NJ9000007MMFf" maxlength="80" name="00NJ9000007MMFf" type="text" placeholder="Enter your email" />
+
+    <label for="company">Company</label>
+    <input id="company" maxlength="80" name="company" type="text" placeholder="Enter your company name" />
+
+    <label for="type">Enquiry Type</label>
+    <select id="type" name="type">
+      <option value="">--Select Enquiry Type--</option>
+      <option value="Problem">Problem</option>
+      <option value="Question">Question</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <input id="subject" maxlength="80" name="subject" type="text" placeholder="Enter the subject" />
+
+    <label for="description">Message</label>
+    <textarea id="description" name="description" placeholder="Describe your issue or request"></textarea>
+
+    <input type="hidden" id="recordType" name="recordType" value="012J9000000GtNv">
+
+    <input type="hidden" id="external" name="external" value="1" />
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

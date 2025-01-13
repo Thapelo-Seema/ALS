@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Salesforce Web-to-Case Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background-color: #f4f4f9;
+      overflow-x: hidden;
+      padding-top: 20px; /* Prevent content from touching the top */
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form label {
+      align-self: flex-start;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    form input[type="text"],
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 15px;
+      }
+
+      form label {
+        font-size: 14px;
+      }
+
+      form input[type="text"],
+      form textarea,
+      form select {
+        font-size: 13px;
+        padding: 8px;
+      }
+
+      form input[type="submit"] {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
+
+    <input type=hidden name="oid" value="00DJ9000000PeNb">
+    <input type=hidden name="retURL" value="http://www.google.com">
+
+    <h1>Estimate Request</h1>
+
+    <label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+
+    <label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+
+    <label for="00NJ9000007MMFV">Phone</label>
+    <input id="00NJ9000007MMFV" maxlength="40" name="00NJ9000007MMFV" type="text" placeholder="Enter your phone number" />
+
+    <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+    <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+
+
+    <label for="description">Message</label>
+    <textarea id="description" name="description" placeholder="Describe your request"></textarea>
+
+    Solution/s Interested In:<select  id="00NJ9000008YnC9" multiple="multiple" name="00NJ9000008YnC9" title="Solution Types"><option value="Air Forwarding">Air Forwarding</option>
+      <option value="Sea Forwarding">Sea Forwarding</option>
+      <option value="Air Freight Imports">Air Freight Imports</option>
+      <option value="Sea Freight Imports">Sea Freight Imports</option>
+      <option value="Air Freight Exports">Air Freight Exports</option>
+      <option value="Sea Freight Exports">Sea Freight Exports</option>
+      <option value="Distribution">Distribution</option>
+      <option value="Warehousing">Warehousing</option>
+      </select><br>
+
+    Cargo Types:<select  id="00NJ9000008YnC4" multiple="multiple" name="00NJ9000008YnC4" title="Cargo Types"><option value="Break Bulk Cargo">Break Bulk Cargo</option>
+      <option value="Containerized Cargo">Containerized Cargo</option>
+      <option value="Dry Bulk Cargo">Dry Bulk Cargo</option>
+      <option value="General Cargo">General Cargo</option>
+      <option value="Hazardous Cargo">Hazardous Cargo</option>
+      <option value="Household Goods &amp; Personal Effects">Household Goods &amp; Personal Effects</option>
+      <option value="Liquid Bulk Cargo">Liquid Bulk Cargo</option>
+      <option value="Perishable Cargo">Perishable Cargo</option>
+      <option value="Project Cargo">Project Cargo</option>
+      <option value="Refrigerated Cargo">Refrigerated Cargo</option>
+      </select><br>
+
+      Origin And Destination Cities:<input  id="00NJ9000008ZZa7" maxlength="100" name="00NJ9000008ZZa7" size="20" type="text" /><br>
+
+
+      Preffered Contact Method:<select  id="00NJ9000006zuRD" name="00NJ9000006zuRD" title="Preffered Contact Method"><option value="">--None--</option><option value="Phone">Phone</option>
+        <option value="Email">Email</option>
+        <option value="Both">Both</option>
+        </select><br>
+        
+
+    <input type="hidden" id="recordType" name="recordType" value="012J9000000GxWT">
+    <input type="hidden" id="type" name="type" value="Estimation">
+
+    <input type="hidden" name="external" value="1" />
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
