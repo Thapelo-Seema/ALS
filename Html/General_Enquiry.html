@@ -21,17 +21,16 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
+      max-width: 600px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: left;
     }
 
     form label {
       align-self: flex-start;
       margin-bottom: 5px;
-      font-weight: bold;
       color: #333;
     }
 
@@ -39,7 +38,7 @@
     form input[type="email"],
     form textarea,
     form select {
-      width: 100%;
+      width: 96%;
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
@@ -93,7 +92,7 @@
 <body>
     
   <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
-    <h1>General Enquiry</h1>
+    <h2>Client Enquiries</h2>
     <input type="hidden" name="orgid" value="00DJ9000000PeNb">
     <input type="hidden" name="retURL" value="https://als-sa.co.za/">
 
@@ -124,7 +123,7 @@
 
     <input type="hidden" id="recordType" name="recordType" value="012J9000000GtNv">
 
-    <input type="hidden" id="external" name="external" value="1" />
+    
 
     <input type="submit" value="Submit">
   </form>

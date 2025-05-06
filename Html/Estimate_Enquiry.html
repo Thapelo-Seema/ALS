@@ -3,7 +3,8 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced Salesforce Web-to-Case Form</title>
+  <title>Enhanced Salesforce Web-to-Lead Form</title>
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,24 +24,23 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
+      max-width: 600px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: left;
     }
 
     form label {
       align-self: flex-start;
       margin-bottom: 5px;
-      font-weight: bold;
       color: #333;
     }
 
     form input[type="text"],
     form textarea,
     form select {
-      width: 100%;
+      width: 96%;
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
@@ -97,7 +97,7 @@
     <input type=hidden name="oid" value="00DJ9000000PeNb">
     <input type=hidden name="retURL" value="https://als-sa.co.za/">
 
-    <h1>Estimate Request</h1>
+    <h2>Estimate Request</h2>
 
     <label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
 
@@ -114,42 +114,66 @@
     <label for="description">Message</label>
     <textarea id="description" name="description" placeholder="Describe your request"></textarea>
 
-    Solution/s Interested In:<select  id="00NJ9000008YnC9" multiple="multiple" name="00NJ9000008YnC9" title="Solution Types"><option value="Air Forwarding">Air Forwarding</option>
-      <option value="Sea Forwarding">Sea Forwarding</option>
-      <option value="Air Freight Imports">Air Freight Imports</option>
-      <option value="Sea Freight Imports">Sea Freight Imports</option>
-      <option value="Air Freight Exports">Air Freight Exports</option>
-      <option value="Sea Freight Exports">Sea Freight Exports</option>
-      <option value="Distribution">Distribution</option>
-      <option value="Warehousing">Warehousing</option>
-      </select><br>
+    
 
-    Cargo Types:<select  id="00NJ9000008YnC4" multiple="multiple" name="00NJ9000008YnC4" title="Cargo Types"><option value="Break Bulk Cargo">Break Bulk Cargo</option>
-      <option value="Containerized Cargo">Containerized Cargo</option>
-      <option value="Dry Bulk Cargo">Dry Bulk Cargo</option>
-      <option value="General Cargo">General Cargo</option>
-      <option value="Hazardous Cargo">Hazardous Cargo</option>
-      <option value="Household Goods &amp; Personal Effects">Household Goods &amp; Personal Effects</option>
-      <option value="Liquid Bulk Cargo">Liquid Bulk Cargo</option>
-      <option value="Perishable Cargo">Perishable Cargo</option>
-      <option value="Project Cargo">Project Cargo</option>
-      <option value="Refrigerated Cargo">Refrigerated Cargo</option>
-      </select><br>
+  <label for="solutions-interested"><h4>Solution/s Interested In:</h4></label><br>
+  <div id="solutions-interested"> 
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Forwarding"> Air Forwarding</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Forwarding"> Sea Forwarding</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Imports"> Air Freight Imports</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Imports"> Sea Freight Imports</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Exports"> Air Freight Exports</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Exports"> Sea Freight Exports</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Distribution"> Distribution</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Warehousing"> Warehousing</label><br>
+  </div>
+  <br>
 
-      Origin And Destination Cities:<input  id="00NJ9000008ZZa7" maxlength="100" name="00NJ9000008ZZa7" size="20" type="text" /><br>
+  <label for="cargo-types"><h4>Cargo Types:</h4></label><br> 
+  <div id="cargo-types" style="margin-bottom: 20px;">
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Break Bulk Cargo"> Break Bulk Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Containerized Cargo"> Containerized Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Dry Bulk Cargo"> Dry Bulk Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="General Cargo"> General Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Hazardous Cargo"> Hazardous Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Household Goods &amp; Personal Effects"> Household Goods & Personal Effects</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Liquid Bulk Cargo"> Liquid Bulk Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Perishable Cargo"> Perishable Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Project Cargo"> Project Cargo</label><br>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Refrigerated Cargo"> Refrigerated Cargo</label><br>
+  </div>
 
+  <label for="origin-city">Origin City:</label>
+<input id="origin-city" maxlength="50" name="origin_city" size="20" type="text" placeholder="Enter origin city" /><br>
+
+<label for="destination-city">Destination City:</label>
+<input id="destination-city" maxlength="50" name="destination_city" size="20" type="text" placeholder="Enter destination city" /><br>
+
+<!-- Hidden field to store concatenated value -->
+<input type="hidden" id="00NJ9000008ZZa7" name="00NJ9000008ZZa7" />
+
+
+
+  
 
       Preffered Contact Method:<select  id="00NJ9000006zuRD" name="00NJ9000006zuRD" title="Preffered Contact Method"><option value="">--None--</option><option value="Phone">Phone</option>
         <option value="Email">Email</option>
         <option value="Both">Both</option>
         </select><br>
         
+        <input type="hidden" id="currency" name="currency" value="ZAR"> 
 
     <input type="hidden" id="recordType" name="recordType" value="012J9000000GxWT">
     <input type="hidden" id="type" name="type" value="Estimation">
+    <input type="hidden"  id="00NdP000000pdc1" name="00NdP000000pdc1" value="Estimate">
 
-    <input type="hidden" name="external" value="1" />
+    
     <input type="submit" value="Submit">
   </form>
-</body>
-</html>
+  <script>
+    // JavaScript to concatenate the values of Origin and Destination Cities
+    document.querySelector('form').addEventListener('submit', function (event) {
+      const originCity = document.getElementById('origin-city').value.trim();
+      const destinationCity = document.getElementById('destination-city').value.trim();
+      const concatenatedValue = `Origin: ${originCity}, Destination: ${destinationCity}`;
+      document.getElem
