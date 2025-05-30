@@ -48,6 +48,13 @@
       font-size: 14px;
     }
 
+    .field-error {
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+
     form textarea {
       resize: vertical;
       min-height: 80px;
@@ -67,6 +74,18 @@
     form input[type="submit"]:hover {
       background-color: #0056b3;
     }
+
+    .checkbox-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 20px;
+    }
+
+    .checkbox-grid label {
+      flex: 0 0 48%;
+      margin-bottom: 10px;
+    }
+
 
     @media (max-width: 600px) {
       form {
@@ -99,16 +118,16 @@
 
     <h2>Estimate Request</h2>
 
-    <label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+    <label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" required /><br>
 
-    <label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+    <label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" required /><br>
 
     <label for="phone">Phone</label>
-    <input id="phone" maxlength="40" name="phone" type="text" placeholder="Enter your phone number" />
+    <input id="phone" maxlength="40" name="phone" type="text" placeholder="Enter your phone number e.g. +271101234123" required />
 
-    <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+    <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" required /><br>
 
-    <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+    <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" required/><br>
 
 
     <label for="description">Message</label>
@@ -116,31 +135,31 @@
 
     
 
-  <label for="solutions-interested"><h4>Solution/s Interested In:</h4></label><br>
-  <div id="solutions-interested"> 
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Forwarding"> Air Forwarding</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Forwarding"> Sea Forwarding</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Imports"> Air Freight Imports</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Imports"> Sea Freight Imports</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Exports"> Air Freight Exports</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Exports"> Sea Freight Exports</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Distribution"> Distribution</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC9" value="Warehousing"> Warehousing</label><br>
+  <label for="solutions-interested">Solution/s Interested In</label>
+  <div id="solutions-interested" class="checkbox-grid" style="font-size: 13px"> 
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Forwarding"> Air Forwarding</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Forwarding"> Sea Forwarding</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Imports"> Air Freight Imports</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Imports"> Sea Freight Imports</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Exports"> Air Freight Exports</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Exports"> Sea Freight Exports</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Distribution"> Distribution</label>
+    <label><input type="checkbox" name="00NJ9000008YnC9" value="Warehousing"> Warehousing</label>
   </div>
   <br>
 
-  <label for="cargo-types"><h4>Cargo Types:</h4></label><br> 
-  <div id="cargo-types" style="margin-bottom: 20px;">
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Break Bulk Cargo"> Break Bulk Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Containerized Cargo"> Containerized Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Dry Bulk Cargo"> Dry Bulk Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="General Cargo"> General Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Hazardous Cargo"> Hazardous Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Household Goods &amp; Personal Effects"> Household Goods & Personal Effects</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Liquid Bulk Cargo"> Liquid Bulk Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Perishable Cargo"> Perishable Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Project Cargo"> Project Cargo</label><br>
-    <label><input type="checkbox" name="00NJ9000008YnC4" value="Refrigerated Cargo"> Refrigerated Cargo</label><br>
+  <label for="cargo-types">Cargo Types</label>
+  <div id="cargo-types" class="checkbox-grid" style="margin-bottom: 20px; font-size: 13px">
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Break Bulk Cargo"> Break Bulk Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Containerized Cargo"> Containerized Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Dry Bulk Cargo"> Dry Bulk Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="General Cargo"> General Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Hazardous Cargo"> Hazardous Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Household Goods &amp; Personal Effects"> Household Goods & Personal Effects</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Liquid Bulk Cargo"> Liquid Bulk Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Perishable Cargo"> Perishable Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Project Cargo"> Project Cargo</label>
+    <label><input type="checkbox" name="00NJ9000008YnC4" value="Refrigerated Cargo"> Refrigerated Cargo</label>
   </div>
 
   <label for="origin-city">Origin City:</label>
@@ -170,10 +189,89 @@
     
     <input type="submit" value="Submit">
   </form>
-  <script>
-    // JavaScript to concatenate the values of Origin and Destination Cities
-    document.querySelector('form').addEventListener('submit', function (event) {
-      const originCity = document.getElementById('origin-city').value.trim();
-      const destinationCity = document.getElementById('destination-city').value.trim();
-      const concatenatedValue = `Origin: ${originCity}, Destination: ${destinationCity}`;
-      document.getElem
+ <script>
+  const requiredFields = ['first_name', 'last_name', 'phone', 'email', 'company', 'description'];
+
+  function showError(inputEl, message) {
+    removeError(inputEl);
+    inputEl.style.border = '1px solid red';
+    const errorSpan = document.createElement('span');
+    errorSpan.className = 'field-error';
+    errorSpan.textContent = message;
+    errorSpan.style.color = 'red';
+    errorSpan.style.fontSize = '12px';
+    inputEl.parentNode.insertBefore(errorSpan, inputEl.nextSibling);
+  }
+
+  function removeError(inputEl) {
+    inputEl.style.border = '';
+    const next = inputEl.nextSibling;
+    if (next && next.className === 'field-error') {
+      next.remove();
+    }
+  }
+
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email.trim());
+  }
+
+  function validatePhone(phone) {
+    const phoneDigits = phone.replace(/\D/g, '');
+    return phoneDigits.length >= 10;
+  }
+
+  function validateField(inputEl) {
+    const id = inputEl.id;
+    const value = inputEl.value.trim();
+
+    if (!value) {
+      showError(inputEl, 'This field is required.');
+      return false;
+    }
+
+    if (id === 'email' && !validateEmail(value)) {
+      showError(inputEl, 'Please enter a valid email address.');
+      return false;
+    }
+
+    if (id === 'phone' && !validatePhone(value)) {
+      showError(inputEl, 'Please enter a valid phone number (min 10 digits).');
+      return false;
+    }
+
+    removeError(inputEl);
+    return true;
+  }
+
+  // Attach validation handlers
+  requiredFields.forEach(fieldId => {
+    const input = document.getElementById(fieldId);
+    if (!input) return;
+
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => validateField(input));
+  });
+
+  // Final form submission validation
+  document.querySelector('form').addEventListener('submit', function (event) {
+    let isValid = true;
+
+    requiredFields.forEach(fieldId => {
+      const input = document.getElementById(fieldId);
+      if (!validateField(input)) {
+        isValid = false;
+      }
+    });
+
+    // Concatenate origin/destination
+    const originCity = document.getElementById('origin-city').value.trim();
+    const destinationCity = document.getElementById('destination-city').value.trim();
+    document.getElementById('00NJ9000008ZZa7').value = `Origin: ${originCity}, Destination: ${destinationCity}`;
+
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+</script>
+

@@ -100,7 +100,7 @@
     <input id="name" name="name" maxlength="80" type="text" placeholder="Enter your name" />
 
     <label for="phone">Phone</label>
-    <input id="phhone" maxlength="40" name="phone" type="text" placeholder="Enter your phone number" />
+    <input id="phone" maxlength="40" name="phone" type="text" placeholder="Enter your phone number" />
 
     <label for="email">Email</label>
     <input id="email" maxlength="80" name="email" type="text" placeholder="Enter your email" />
@@ -127,5 +127,91 @@
 
     <input type="submit" value="Submit">
   </form>
+  <script>
+  const requiredFields = ['name', 'phone', 'email', 'company', 'description'];
+
+  function showError(inputEl, message) {
+    removeError(inputEl);
+    inputEl.style.border = '1px solid red';
+    const errorSpan = document.createElement('span');
+    errorSpan.className = 'field-error';
+    errorSpan.textContent = message;
+    errorSpan.style.color = 'red';
+    errorSpan.style.fontSize = '12px';
+    inputEl.parentNode.insertBefore(errorSpan, inputEl.nextSibling);
+  }
+
+  function removeError(inputEl) {
+    inputEl.style.border = '';
+    const next = inputEl.nextSibling;
+    if (next && next.className === 'field-error') {
+      next.remove();
+    }
+  }
+
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email.trim());
+  }
+
+  function validatePhone(phone) {
+    const phoneDigits = phone.replace(/\D/g, '');
+    return phoneDigits.length >= 10;
+  }
+
+  function validateField(inputEl) {
+    const id = inputEl.id;
+    const value = inputEl.value.trim();
+
+    if (!value) {
+      showError(inputEl, 'This field is required.');
+      return false;
+    }
+
+    if (id === 'email' && !validateEmail(value)) {
+      showError(inputEl, 'Please enter a valid email address.');
+      return false;
+    }
+
+    if (id === 'phone' && !validatePhone(value)) {
+      showError(inputEl, 'Please enter a valid phone number (min 10 digits).');
+      return false;
+    }
+
+    removeError(inputEl);
+    return true;
+  }
+
+  // Attach validation handlers
+  requiredFields.forEach(fieldId => {
+    const input = document.getElementById(fieldId);
+    if (!input) return;
+
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => validateField(input));
+  });
+
+  // Final form submission validation
+  document.querySelector('form').addEventListener('submit', function (event) {
+    let isValid = true;
+
+    requiredFields.forEach(fieldId => {
+      const input = document.getElementById(fieldId);
+      if (!validateField(input)) {
+        isValid = false;
+      }
+    });
+
+    // Concatenate origin/destination
+    const originCity = document.getElementById('origin-city').value.trim();
+    const destinationCity = document.getElementById('destination-city').value.trim();
+    document.getElementById('00NJ9000008ZZa7').value = `Origin: ${originCity}, Destination: ${destinationCity}`;
+
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+</script>
+
 </body>
 </html>
