@@ -101,6 +101,7 @@
       form select {
         font-size: 13px;
         padding: 8px;
+        font-family: "sans-serif";
       }
 
       form input[type="submit"] {
@@ -111,9 +112,9 @@
 </head>
 <body>
   
-  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
+ <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
 
-    <input type=hidden name="oid" value="00DJ9000000PeNb">
+<input type=hidden name="oid" value="00DJ9000000PeNb">
     <input type=hidden name="retURL" value="https://als-sa.co.za/">
 
     <h2>Estimate Request</h2>
@@ -123,7 +124,7 @@
     <label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" required /><br>
 
     <label for="phone">Phone</label>
-    <input id="phone" maxlength="40" name="phone" type="text" placeholder="Enter your phone number e.g. +271101234123" required />
+    <input id="phone" maxlength="40" name="phone" type="text" placeholder="Describe your request" required />
 
     <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" required /><br>
 
@@ -182,7 +183,7 @@
         
         <input type="hidden" id="currency" name="currency" value="ZAR"> 
 
-    <input type="hidden" id="recordType" name="recordType" value="012J9000000GxWT">
+    <input type="hidden" id="recordType" name="recordType" value="012J9000000GxWT"> 
     <input type="hidden" id="type" name="type" value="Estimation">
     <input type="hidden"  id="00NdP000000pdc1" name="00NdP000000pdc1" value="Estimate">
 

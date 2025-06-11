@@ -6,34 +6,227 @@
 
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 
-    <!--  ----------------------------------------------------------------------  -->
-    <!--  NOTE: Please add the following <FORM> element to your page.             -->
-    <!--  ----------------------------------------------------------------------  -->
-    
-    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DQy00000GsWg1" method="POST">
-    
-    <input type=hidden name="orgid" value="00DQy00000GsWg1">
-    <input type=hidden name="retURL" value="http://www.google.com">
-    
-    <!--  ----------------------------------------------------------------------  -->
-    <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-    <!--  these lines if you wish to test in debug mode.                          -->
-    <!--  <input type="hidden" name="debug" value=1>                              -->
-    <!--  <input type="hidden" name="debugEmail"                                  -->
-    <!--  value="thapelo.seema@gmail.com">                                        -->
-    <!--  ----------------------------------------------------------------------  -->
-    
-    <label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
-    
-    <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
-    
-    <label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
-    
-    <label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
-    
-    <label for="description">Description</label><textarea name="description"></textarea><br>
-    
-    <input type="submit" name="submit">
-    
-    </form>
-    
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
+
+<input type=hidden name="oid" value="00DJ9000000PeNb">
+<input type=hidden name="retURL" value="http://www.google.com">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail"                                  -->
+<!--  value="thapelo.seema@gmail.com">                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+
+<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+<label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+
+<label for="city">City</label><input  id="city" maxlength="40" name="city" size="20" type="text" /><br>
+
+<label for="state">State/Province</label><input  id="state" maxlength="20" name="state" size="20" type="text" /><br>
+
+<label for="salutation">Salutation</label><select  id="salutation" name="salutation"><option value="">--None--</option><option value="Mr.">Mr.</option>
+<option value="Ms.">Ms.</option>
+<option value="Mrs.">Mrs.</option>
+<option value="Dr.">Dr.</option>
+<option value="Prof.">Prof.</option>
+<option value="Mx.">Mx.</option>
+</select><br>
+
+<label for="title">Title</label><input  id="title" maxlength="40" name="title" size="20" type="text" /><br>
+
+<label for="url">Website</label><input  id="url" maxlength="80" name="url" size="20" type="text" /><br>
+
+<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+
+<label for="mobile">Mobile</label><input  id="mobile" maxlength="40" name="mobile" size="20" type="text" /><br>
+
+<label for="fax">Fax</label><input  id="fax" maxlength="40" name="fax" size="20" type="text" /><br>
+
+<label for="street">Street</label><textarea name="street"></textarea><br>
+
+<label for="zip">Zip</label><input  id="zip" maxlength="20" name="zip" size="20" type="text" /><br>
+
+<label for="country">Country</label><input  id="country" maxlength="40" name="country" size="20" type="text" /><br>
+
+<label for="description">Description</label><textarea name="description"></textarea><br>
+
+<label for="lead_source">Lead Source</label><select  id="lead_source" name="lead_source"><option value="">--None--</option><option value="Advertisement">Advertisement</option>
+<option value="Employee Referral">Employee Referral</option>
+<option value="External Referral">External Referral</option>
+<option value="Partner">Partner</option>
+<option value="Public Relations">Public Relations</option>
+<option value="Seminar - Internal">Seminar - Internal</option>
+<option value="Seminar - Partner">Seminar - Partner</option>
+<option value="Trade Show">Trade Show</option>
+<option value="Web">Web</option>
+<option value="Word of mouth">Word of mouth</option>
+<option value="Other">Other</option>
+</select><br>
+
+<label for="industry">Industry</label><select  id="industry" name="industry"><option value="">--None--</option><option value="Agriculture">Agriculture</option>
+<option value="Apparel">Apparel</option>
+<option value="Banking">Banking</option>
+<option value="Biotechnology">Biotechnology</option>
+<option value="Chemicals">Chemicals</option>
+<option value="Communications">Communications</option>
+<option value="Construction">Construction</option>
+<option value="Consulting">Consulting</option>
+<option value="Education">Education</option>
+<option value="Electronics">Electronics</option>
+<option value="Energy">Energy</option>
+<option value="Engineering">Engineering</option>
+<option value="Entertainment">Entertainment</option>
+<option value="Environmental">Environmental</option>
+<option value="Finance">Finance</option>
+<option value="Food &amp; Beverage">Food &amp; Beverage</option>
+<option value="Government">Government</option>
+<option value="Healthcare">Healthcare</option>
+<option value="Hospitality">Hospitality</option>
+<option value="Insurance">Insurance</option>
+<option value="Machinery">Machinery</option>
+<option value="Manufacturing">Manufacturing</option>
+<option value="Media">Media</option>
+<option value="Not For Profit">Not For Profit</option>
+<option value="Other">Other</option>
+<option value="Recreation">Recreation</option>
+<option value="Retail">Retail</option>
+<option value="Shipping">Shipping</option>
+<option value="Technology">Technology</option>
+<option value="Telecommunications">Telecommunications</option>
+<option value="Transportation">Transportation</option>
+<option value="Utilities">Utilities</option>
+</select><br>
+
+<label for="rating">Rating</label><select  id="rating" name="rating"><option value="">--None--</option><option value="Hot">Hot</option>
+<option value="Warm">Warm</option>
+<option value="Cold">Cold</option>
+</select><br>
+
+<label for="currency"><span class="assistiveText">*</span>Lead Currency</label><select  id="currency" name="currency"><option value="EUR">EUR - Euro</option>
+<option value="GBP" selected="selected">GBP - British Pound</option>
+<option value="JPY">JPY - Japanese Yen</option>
+<option value="USD">USD - U.S. Dollar</option>
+<option value="ZAR">ZAR - South African Rand</option>
+</select><br>
+
+<label for="revenue">Annual Revenue</label><input  id="revenue" name="revenue" size="20" type="text" /><br>
+
+<label for="employees">Employees</label><input  id="employees" name="employees" size="20" type="text" value="" /><br>
+
+<label for="Campaign_ID">Campaign</label><select  id="Campaign_ID" name="Campaign_ID"><option value="">--None--</option><option value="701J9000000HObo">Test Campaign</option>
+<option value="701J9000000HObt">Festive Special</option>
+<option value="701J9000000HOdu">News Flash</option>
+<option value="701J9000000HOuC">Test 2</option>
+<option value="701J9000000HPCH">Test 3</option>
+<option value="701J9000000HPED">Test 4</option>
+<option value="701J9000000HPIa">Test 5</option>
+<option value="701J9000000HPKv">Test 6</option>
+<option value="701J9000000HQ1X">Test 7</option>
+<option value="701J9000000HQGN">Testing 10</option>
+<option value="701dP00000D9Veb">Ruan 123</option>
+<option value="701dP00000DC2eT">ALS Feb 2025</option>
+<option value="701dP00000DRmnU">Feb 2025 marketing</option>
+<option value="701dP00000DSCeh">Newsflash February 2025</option>
+</select><br>
+
+<input type="hidden"  id="member_status" name="member_status" value="" /><br>
+
+<label for="emailOptOut">Email Opt Out</label><input  id="emailOptOut" name="emailOptOut" type="checkbox" value="1" /><br>
+
+<label for="faxOptOut">Fax Opt Out</label><input  id="faxOptOut" name="faxOptOut" type="checkbox" value="1" /><br>
+
+<label for="doNotCall">Do Not Call</label><input  id="doNotCall" name="doNotCall" type="checkbox" value="1" /><br>
+
+<label for="recordType">Lead Record Type</label><select  id="recordType" name="recordType"><option value="">--None--</option><option value="012J9000000GxWT">Estimation</option>
+<option value="012J9000000GxWO">General Lead</option>
+</select><br>
+
+Preffered Contact Method:<select  id="00NJ9000006zuRD" name="00NJ9000006zuRD" title="Preffered Contact Method"><option value="">--None--</option><option value="Phone">Phone</option>
+<option value="Email">Email</option>
+<option value="Both">Both</option>
+</select><br>
+
+Record Type:<select  id="00NdP000000pdc1" name="00NdP000000pdc1" title="Record Type">
+    <option value="">--None--</option>
+    <option value="Estimate">Estimate</option>
+    <option value="General">General</option>
+</select><br>
+
+Locations Operating In:<textarea  id="00NJ9000007NGJz" name="00NJ9000007NGJz" type="text" wrap="soft"></textarea><br>
+
+Cargo Types:<select  id="00NJ9000008YnC4" multiple="multiple" name="00NJ9000008YnC4" title="Cargo Types"><option value="Break Bulk Cargo">Break Bulk Cargo</option>
+<option value="Containerized Cargo">Containerized Cargo</option>
+<option value="Dry Bulk Cargo">Dry Bulk Cargo</option>
+<option value="General Cargo">General Cargo</option>
+<option value="Hazardous Cargo">Hazardous Cargo</option>
+<option value="Household Goods &amp; Personal Effects">Household Goods &amp; Personal Effects</option>
+<option value="Liquid Bulk Cargo">Liquid Bulk Cargo</option>
+<option value="Perishable Cargo">Perishable Cargo</option>
+<option value="Project Cargo">Project Cargo</option>
+<option value="Refrigerated Cargo">Refrigerated Cargo</option>
+</select><br>
+
+Solution Types:<select  id="00NJ9000008YnC9" multiple="multiple" name="00NJ9000008YnC9" title="Solution Types"><option value="Air Forwarding">Air Forwarding</option>
+<option value="Sea Forwarding">Sea Forwarding</option>
+<option value="Air Freight Imports">Air Freight Imports</option>
+<option value="Sea Freight Imports">Sea Freight Imports</option>
+<option value="Air Freight Exports">Air Freight Exports</option>
+<option value="Sea Freight Exports">Sea Freight Exports</option>
+<option value="Distribution">Distribution</option>
+<option value="Warehousing">Warehousing</option>
+</select><br>
+
+Probing Comments:<textarea  id="00NJ9000008YnKwMAK" name="00NJ9000008YnKwMAK" rows="15" type="text" wrap="soft"></textarea><script>CKEDITOR.timestamp = '4.24.0.4';
+var protocolAndHost = window.location.protocol + '//' + window.location.host;
+
+var editor = CKEDITOR.replace('00NJ9000008YnKwMAK', {
+removePlugins : 'elementspath,maximize,image,tabletools,liststyle,contextmenu,resize',
+baseHref : protocolAndHost + '/ckeditor/ckeditor-4.x/rel/',
+customConfig : '/ckeditor/ckeditor-4.x/rel/sfdc-config.js',
+height : '255',
+bodyId : '00NJ9000008YnKwMAK_rta_body',
+toolbar : 'SalesforceBasic',
+sfdcLabels :{CkeLineHeight : { doubleValue : 'Double', secondValue : '1.15', singleValue : 'Single', thirdValue : '1.5', title : 'Line Height'}, CkeCodeBlock : { addCodeSample : 'Add a code sample'}, CkeQuickText : { title : 'Insert quick text'}, CkeMediaEmbed : { description : 'Use &lt;iframe&gt; code from an approved video source.', example : '\n            \n                &lt;iframe width=\&quot;560\&quot; height=\&quot;315\&quot; src=\&quot;https://www.youtube.com/embed/KcOm0TNvKBA\&quot; frameborder=\&quot;0\&quot; allowfullscreen&gt;&lt;/iframe&gt;\n            \n        ', exampleTitle : 'Example:', iframeMissing : 'Invalid &lt;iframe&gt; element. Please use valid code from the approved sites.', subtitle : 'Paste &amp;lt;iframe&amp;gt; code here:', title : 'Embed Multimedia Content'}, CkeImageMenu : { pasteUrl : 'Paste Image URL', title : 'Insert images into your message', uploadCms : 'Salesforce CMS', uploadFile : ' Browse or Upload', uploadSFFile : 'Salesforce Files', uploadUrl : 'Web Image'}, CkeImagePaste : { CkeImagePasteWarning : 'Pasting an image is not working properly with Firefox, please use [Copy Image location] instead.'}, CkeImageDialog : { btn_insert : 'Insert', btn_insert_tooltip : 'Insert Image', btn_upadte : 'Update', btn_update : 'Update', btn_update_tooltip : 'Update Image', defaultImageDescription : 'User-added image', error : 'Error:', httpUrlWarning : 'Are you sure you want to use an http URL? Using http image URLs may result in security warnings about insecure content. To avoid these warnings, use https image URLs instead.', imageUploadLimit_info : 'Max number of upload images exceeded', infoTab : 'Web Address', infoTab_desc : 'Description', infoTab_desc_info : 'Enter a description of the image for visually impaired users', infoTab_url : 'URL', infoTab_url_info : 'Example: http://www.mysite.com/myimage.jpg', invalidUrlError : 'You can only use http:, https:, data:, //, /, or relative URL schemes.', missingUrlError : 'You must enter a URL', title : 'Insert Image', uploadTab : 'Upload Image', uploadTab_desc : 'Description', uploadTab_desc_info : 'Enter a description of the image for visually impaired users', uploadTab_file : 'Select Image', uploadTab_file_info : 'Maximum size 1 MB. Only PNG, GIF or JPEG', wrongFileTypeError : 'You can insert only .gif .jpeg and .png files.'}, sfdcSwitchToText : { sfdcSwitchToTextAlt : 'Use plain text'}, CkeSmartLink : { SmartLinkContextMenuEdit : 'Edit Smart Link', title : 'Insert a Smart Link'}},
+contentsCss: ['/ckeditor/ckeditor-4.x/rel/contents.css', '/sCSS/63.0/sprites/1748508149000/Theme3/default/gc/CKEditor.css', '/sCSS/63.0/sprites/1748508149000/Theme3/default/gc/HtmlDetailElem.css'],
+disableNativeSpellChecker : false,
+language : 'en-US',
+allowIframe : false,
+isPardotOrg : false,
+isCmsOnly : false,
+sharedSpaces : { top : 'cke_topSpace', bottom : ' cke_bottomSpace' }
+,filebrowserImageUploadUrl : '/_ui/common/request/servlet/RtaImageUploadServlet?_CONFIRMATIONTOKEN=VmpFPSxNakF5TlMwd05pMHdOMVF3TmpvMU1Eb3lNeTQxTnpaYSxremFhdGRoNnVKTlVSQ2NqenFOMXROZExmekN4ejZfUUt4M3hFYTZxaFZjPSxOR0ZtTXpjMg=='
+});
+
+editor.on('instanceReady', function( evt ) {
+    try {
+        var id = evt.editor.name;
+        CKiframe = document.getElementById('cke_' + id).querySelector('iframe');
+        meta = document.createElement('meta');
+        meta.setAttribute('name', 'referrer');
+        meta.setAttribute('content', 'no-referrer');
+        CKiframe.contentDocument.head.appendChild(meta);
+    } catch(e) {}
+} );
+
+</script><br>
+
+Disqualified Reason:<textarea  id="00NJ9000008YnPS" name="00NJ9000008YnPS" rows="3" type="text" wrap="soft"></textarea><br>
+
+Origin And Destination Cities:<input  id="00NJ9000008ZZa7" maxlength="100" name="00NJ9000008ZZa7" size="20" type="text" /><br>
+
+Contact Email:<input  id="00NJ9000008ZgBb" maxlength="80" name="00NJ9000008ZgBb" size="20" type="text" /><br>
+
+<input type="submit" name="submit">
+
+</form>
