@@ -4,16 +4,20 @@
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Salesforce Web-to-Case Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/css/intlTelInput.css" />
+
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 20px 0 0 0;
+      /* top padding only */
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: flex-start;
+      min-height: 100vh;
       background-color: #f4f4f9;
+      overflow-x: hidden;
     }
 
     form {
@@ -25,45 +29,97 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: left;
+      gap: 12px;
+      /* space between form elements */
     }
 
-    form label {
-      align-self: flex-start;
-      margin-bottom: 5px;
+    form h2 {
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    label {
+      font-size: 14px;
       color: #333;
+      font-weight: 600;
     }
 
-    form input[type="text"],
-    form input[type="email"],
-    form textarea,
-    form select {
-      width: 96%;
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
+      font-size: 14px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 14px;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
     }
 
-    form textarea {
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    input[type="email"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    textarea {
       resize: vertical;
-      min-height: 100px;
+      min-height: 80px;
     }
 
-    form input[type="submit"] {
+    .checkbox-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      font-size: 13px;
+    }
+
+    .checkbox-grid label {
+      flex: 0 0 48%;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    input[type="submit"] {
       background-color: #007bff;
       color: white;
       border: none;
-      padding: 10px;
+      padding: 12px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
       width: 100%;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
     }
 
-    form input[type="submit"]:hover {
+    input[type="submit"]:hover {
       background-color: #0056b3;
+    }
+
+    #message {
+      font-size: 12px;
+      min-height: 22px;
+      margin-top: -8px;
+      margin-bottom: 10px;
+    }
+
+    #message.valid {
+      color: #16a34a;
+      /* green */
+    }
+
+    #message.error {
+      color: red;
+      /* red */
     }
 
     @media (max-width: 600px) {
@@ -71,42 +127,52 @@
         padding: 15px;
       }
 
-      form label {
+      label {
         font-size: 14px;
       }
 
-      form input[type="text"],
-      form input[type="email"],
-      form textarea,
-      form select {
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      textarea,
+      select {
         font-size: 13px;
         padding: 8px;
       }
 
-      form input[type="submit"] {
+      input[type="submit"] {
         font-size: 14px;
+        padding: 10px;
+      }
+
+      .checkbox-grid {
+        gap: 8px 15px;
+      }
+
+      .checkbox-grid label {
+        flex: 0 0 100%;
       }
     }
   </style>
 </head>
-<body>
-    
+<body> 
   <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
     <h2>Client Enquiries</h2>
     <input type="hidden" name="orgid" value="00DJ9000000PeNb">
     <input type="hidden" name="retURL" value="https://als-sa.co.za/">
 
     <label for="name">Name & Surname</label>
-    <input id="name" name="name" maxlength="80" type="text" placeholder="Enter your name" />
+    <input id="name" name="name" maxlength="80" type="text" placeholder="Enter your name"/>
 
     <label for="phone">Phone</label>
-    <input id="phone" maxlength="40" name="phone" type="text" placeholder="Enter your phone number" />
+    <input id="phone" maxlength="40" name="phone" type="tel" placeholder="Enter your phone number e.g. +271101234123"/>
+    <span id="message" class="hidden"></span>
 
     <label for="email">Email</label>
-    <input id="email" maxlength="80" name="email" type="text" placeholder="Enter your email" />
+    <input id="email" maxlength="80" name="email" type="text" placeholder="Enter your email"/>
 
     <label for="company">Company</label>
-    <input id="company" maxlength="80" name="company" type="text" placeholder="Enter your company name" />
+    <input id="company" maxlength="80" name="company" type="text" placeholder="Enter your company name"/>
 
     <label for="type">Enquiry Type</label>
     <select id="type" name="type">
@@ -116,19 +182,23 @@
     </select>
 
     <label for="subject">Subject</label>
-    <input id="subject" maxlength="80" name="subject" type="text" placeholder="Enter the subject" />
+    <input id="subject" maxlength="80" name="subject" type="text" placeholder="Enter the subject"/>
 
     <label for="description">Message</label>
-    <textarea id="description" name="description" placeholder="Describe your issue or request" style="font-family: sans-serif" ></textarea>
+    <textarea id="description" name="description" placeholder="Describe your issue or request" ></textarea>
 
     <input type="hidden" id="recordType" name="recordType" value="012J9000000GtNv">
 
-    
-
     <input type="submit" value="Submit">
   </form>
+  <!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- intl-tel-input -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js"></script>
   <script>
-  const requiredFields = ['name', 'phone', 'email', 'company', 'description'];
+  const requiredFields = ['name', 'email', 'company', 'description', 'type', 'subject'];
 
   function showError(inputEl, message) {
     removeError(inputEl);
@@ -136,7 +206,7 @@
     const errorSpan = document.createElement('span');
     errorSpan.className = 'field-error';
     errorSpan.textContent = message;
-    errorSpan.style.color = 'red';
+    errorSpan.style.color = 'red'; 
     errorSpan.style.fontSize = '12px';
     inputEl.parentNode.insertBefore(errorSpan, inputEl.nextSibling);
   }
@@ -154,11 +224,6 @@
     return emailRegex.test(email.trim());
   }
 
-  function validatePhone(phone) {
-    const phoneDigits = phone.replace(/\D/g, '');
-    return phoneDigits.length >= 10;
-  }
-
   function validateField(inputEl) {
     const id = inputEl.id;
     const value = inputEl.value.trim();
@@ -173,25 +238,19 @@
       return false;
     }
 
-    if (id === 'phone' && !validatePhone(value)) {
-      showError(inputEl, 'Please enter a valid phone number (min 10 digits).');
-      return false;
-    }
-
     removeError(inputEl);
     return true;
   }
 
-  // Attach validation handlers
+  // Attach validation handlers for all required fields
   requiredFields.forEach(fieldId => {
     const input = document.getElementById(fieldId);
     if (!input) return;
-
     input.addEventListener('blur', () => validateField(input));
     input.addEventListener('input', () => validateField(input));
   });
 
-  // Final form submission validation
+  // On form submit: validate all fields, concatenate origin/destination
   document.querySelector('form').addEventListener('submit', function (event) {
     let isValid = true;
 
@@ -210,6 +269,49 @@
     if (!isValid) {
       event.preventDefault();
     }
+  });
+
+  // Initialize intl-tel-input and validate phone number on input
+  $(function () {
+    var $input = $("#phone");
+    var $message = $("#message");
+
+    $input.intlTelInput({
+      formatOnDisplay: true,
+      initialCountry: "auto",
+      nationalMode: false,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js",
+      geoIpLookup: function (callback) {
+        $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+          var countryCode = (resp && resp.country) ? resp.country.toLowerCase() : "us";
+          callback(countryCode);
+        });
+      }
+    });
+
+    $input.on("input", function () {
+      $message.text("").removeClass("error valid");
+      var phoneNumber = $input.val().trim();
+
+      if ($input.intlTelInput("isValidNumber")) {
+        var formattedNumber = $input.intlTelInput("getNumber", intlTelInputUtils.numberFormat.INTERNATIONAL);
+        $("#message").addClass("hidden");
+        $message.addClass("valid").text("Valid phone number: " + formattedNumber);
+      } else {
+        $("#message").removeClass("hidden");
+        $message.addClass("error").text("Invalid phone number.");
+      }
+    });
+      // Prevent form submission if phone number is invalid
+    $("form").on("submit", function (e) {
+      const phoneNumber = $input.val().trim();
+
+      if (!phoneNumber || !$input.intlTelInput("isValidNumber")) {
+        e.preventDefault();
+        $("#message").removeClass("hidden");
+        $message.addClass("error").text("Please enter a valid phone number.");
+      }
+    });
   });
 </script>
 
