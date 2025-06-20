@@ -119,7 +119,8 @@
       /* green */
     }
 
-    #message.error {
+    #message,
+    .checkbox-message.error {
       color: red;
       /* red */
     }
@@ -159,7 +160,8 @@
 </head>
 
 <body>
-  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000000PeNb"
+    method="POST">
     <input type="hidden" name="oid" value="00DJ9000000PeNb" />
     <input type="hidden" name="retURL" value="https://als-sa.co.za/" />
 
@@ -173,7 +175,7 @@
 
     <label for="phone">Phone</label>
     <input id="phone" maxlength="40" name="phone" type="tel" placeholder="Enter your phone number e.g. +271101234123" />
-    <span id="message" class="hidden"></span>
+    <span id="message"></span>
 
     <label for="email">Email</label>
     <input id="email" maxlength="80" placeholder="Enter email" name="email" size="20" type="email" />
@@ -185,7 +187,7 @@
     <textarea id="description" name="description" placeholder="Describe your request"></textarea>
 
     <label for="solutions-interested">Solution/s Interested In</label>
-    <div id="solutions-interested" class="checkbox-grid">
+    <div id="solutions-interested" class="checkbox-wrapper checkbox-grid">
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Forwarding" />Air Forwarding</label>
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Forwarding" />Sea Forwarding</label>
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Imports" />Air Freight Imports</label>
@@ -194,26 +196,32 @@
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Freight Exports" />Sea Freight Exports</label>
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Distribution" />Distribution</label>
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Warehousing" />Warehousing</label>
+      <span class="checkbox-message"></span>
     </div>
 
     <label for="cargo-types">Cargo Types</label>
-    <div id="cargo-types" class="checkbox-grid" style="margin-bottom: 20px">
+    <div id="cargo-types" class="checkbox-wrapper checkbox-grid" style="margin-bottom: 20px">
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Break Bulk Cargo" />Break Bulk Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Containerized Cargo" />Containerized Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Dry Bulk Cargo" />Dry Bulk Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="General Cargo" />General Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Hazardous Cargo" />Hazardous Cargo</label>
-      <label><input type="checkbox" name="00NJ9000008YnC4" value="Household Goods & Personal Effects" />Household Goods & Personal Effects</label>
+      <label><input type="checkbox" name="00NJ9000008YnC4" value="Household Goods & Personal Effects" />Household Goods
+        & Personal Effects</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Liquid Bulk Cargo" />Liquid Bulk Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Perishable Cargo" />Perishable Cargo</label>
-      <label><input type="checkbox" name="00NJ9000008YnC4" value="Project Cargo" />Project Cargo</label>Refrigerated Cargo</label>
+      <label><input type="checkbox" name="00NJ9000008YnC4" value="Project Cargo" />Project Cargo</label>Refrigerated
+      Cargo</label>
+      <span class="checkbox-message"></span>
     </div>
+
 
     <label for="origin-city">Origin City:</label>
     <input id="origin-city" maxlength="50" name="origin_city" size="20" type="text" placeholder="Enter origin city" />
 
     <label for="destination-city">Destination City:</label>
-    <input id="destination-city" maxlength="50" name="destination_city" size="20" type="text" placeholder="Enter destination city" />
+    <input id="destination-city" maxlength="50" name="destination_city" size="20" type="text"
+      placeholder="Enter destination city" />
 
     <!-- Hidden field to store concatenated value -->
     <input type="hidden" id="00NJ9000008ZZa7" name="00NJ9000008ZZa7" />
@@ -232,7 +240,8 @@
     <input type="hidden" id="type" name="type" value="Estimation" />
     <input type="hidden" id="00NdP000000pdc1" name="00NdP000000pdc1" value="Estimate" />
 
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" id="submit-btn" />
+
   </form>
 </body>
 <!-- jQuery -->
@@ -251,7 +260,7 @@
     const errorSpan = document.createElement('span');
     errorSpan.className = 'field-error';
     errorSpan.textContent = message;
-    errorSpan.style.color = 'red'; 
+    errorSpan.style.color = 'red';
     errorSpan.style.fontSize = '12px';
     inputEl.parentNode.insertBefore(errorSpan, inputEl.nextSibling);
   }
@@ -297,6 +306,7 @@
 
   // On form submit: validate all fields, concatenate origin/destination
   document.querySelector('form').addEventListener('submit', function (event) {
+    const $submitBtn = $("#submit-btn");
     let isValid = true;
 
     requiredFields.forEach(fieldId => {
@@ -314,7 +324,13 @@
 
     if (!isValid) {
       event.preventDefault();
-    }
+      $submitBtn.val("Submit"); // Revert text just in case
+      $submitBtn.prop("disabled", false);
+      return false;
+      }
+      // Show loading state
+      $submitBtn.val("Submitting...");
+      $submitBtn.prop("disabled", true); // prevent double-click
   });
 
   // Initialize intl-tel-input and validate phone number on input
@@ -341,26 +357,67 @@
 
       if ($input.intlTelInput("isValidNumber")) {
         var formattedNumber = $input.intlTelInput("getNumber", intlTelInputUtils.numberFormat.INTERNATIONAL);
-        $("#message").addClass("hidden");
+        $message.addClass("hidden");
         $message.addClass("valid").text("Valid phone number: " + formattedNumber);
       } else {
-        $("#message").removeClass("hidden");
+        $message.removeClass("hidden");
         $message.addClass("error").text("Invalid phone number.");
       }
     });
-      // Prevent form submission if phone number is invalid
+
     $("form").on("submit", function (e) {
+      const $submitBtn = $("#submit-btn");
       const phoneNumber = $input.val().trim();
 
+      $('input[name="00NdP000000pdc1"]').remove(); // remove any existing
+      $('<input>', {
+        type: 'hidden',
+        name: '00NdP000000pdc1',
+        value: 'Estimate'
+      }).appendTo('form');
+
+      let valid = true;
+
+      //Validate checkboxes
+      $(".checkbox-wrapper").each(function () {
+        const $wrapper = $(this);
+        const $checkboxMessage = $wrapper.find(".checkbox-message");
+
+        const hasCargoTypeCheckboxes = $wrapper.find('input[type="checkbox"][name="00NJ9000008YnC4"]').length > 0;
+        const hasSolutionsCheckboxes = $wrapper.find('input[type="checkbox"][name="00NJ9000008YnC9"]').length > 0;
+
+        if (hasCargoTypeCheckboxes || hasSolutionsCheckboxes) {
+          if ($wrapper.find('input[type="checkbox"]:checked').length === 0) {
+            valid = false;
+            $checkboxMessage.addClass("error").text("Please select at least one option.");
+          } else {
+            $checkboxMessage.removeClass("error").text("");
+          }
+        }
+      });
+
+      //Validate phone number
       if (!phoneNumber || !$input.intlTelInput("isValidNumber")) {
-        e.preventDefault();
-        $("#message").removeClass("hidden");
+        valid = false;
         $message.addClass("error").text("Please enter a valid phone number.");
+      } else {
+        $message.removeClass("error").text("");
       }
+
+      //Prevent form submission if invalid
+      if (!valid) {
+        e.preventDefault();
+        $submitBtn.val("Submit"); // Revert text just in case
+        $submitBtn.prop("disabled", false);
+        return false;
+      }
+      // Show loading state
+      $submitBtn.val("Submitting...");
+      $submitBtn.prop("disabled", true); // prevent double-click
     });
+
   });
 </script>
-
 </body>
 
 </html>

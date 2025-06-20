@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -155,24 +156,26 @@
     }
   </style>
 </head>
-<body> 
-  <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DJ9000000PeNb" method="POST">
+
+<body>
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DJ9000000PeNb"
+    method="POST">
     <h2>Client Enquiries</h2>
     <input type="hidden" name="orgid" value="00DJ9000000PeNb">
     <input type="hidden" name="retURL" value="https://als-sa.co.za/">
 
     <label for="name">Name & Surname</label>
-    <input id="name" name="name" maxlength="80" type="text" placeholder="Enter your name"/>
+    <input id="name" name="name" maxlength="80" type="text" placeholder="Enter your name" />
 
     <label for="phone">Phone</label>
-    <input id="phone" maxlength="40" name="phone" type="tel" placeholder="Enter your phone number e.g. +271101234123"/>
+    <input id="phone" maxlength="40" name="phone" type="tel" placeholder="Enter your phone number e.g. +271101234123" />
     <span id="message" class="hidden"></span>
 
     <label for="email">Email</label>
-    <input id="email" maxlength="80" name="email" type="text" placeholder="Enter your email"/>
+    <input id="email" maxlength="80" name="email" type="text" placeholder="Enter your email" />
 
     <label for="company">Company</label>
-    <input id="company" maxlength="80" name="company" type="text" placeholder="Enter your company name"/>
+    <input id="company" maxlength="80" name="company" type="text" placeholder="Enter your company name" />
 
     <label for="type">Enquiry Type</label>
     <select id="type" name="type">
@@ -182,138 +185,162 @@
     </select>
 
     <label for="subject">Subject</label>
-    <input id="subject" maxlength="80" name="subject" type="text" placeholder="Enter the subject"/>
+    <input id="subject" maxlength="80" name="subject" type="text" placeholder="Enter the subject" />
 
     <label for="description">Message</label>
-    <textarea id="description" name="description" placeholder="Describe your issue or request" ></textarea>
+    <textarea id="description" name="description" placeholder="Describe your issue or request"></textarea>
 
     <input type="hidden" id="recordType" name="recordType" value="012J9000000GtNv">
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submit-btn" />
   </form>
   <!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!-- intl-tel-input -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js"></script>
+  <!-- intl-tel-input -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js"></script>
   <script>
-  const requiredFields = ['name', 'email', 'company', 'description', 'type', 'subject'];
+    const requiredFields = ['name', 'email', 'company', 'description', 'type', 'subject'];
 
-  function showError(inputEl, message) {
-    removeError(inputEl);
-    inputEl.style.border = '1px solid red';
-    const errorSpan = document.createElement('span');
-    errorSpan.className = 'field-error';
-    errorSpan.textContent = message;
-    errorSpan.style.color = 'red'; 
-    errorSpan.style.fontSize = '12px';
-    inputEl.parentNode.insertBefore(errorSpan, inputEl.nextSibling);
-  }
-
-  function removeError(inputEl) {
-    inputEl.style.border = '';
-    const next = inputEl.nextSibling;
-    if (next && next.className === 'field-error') {
-      next.remove();
-    }
-  }
-
-  function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email.trim());
-  }
-
-  function validateField(inputEl) {
-    const id = inputEl.id;
-    const value = inputEl.value.trim();
-
-    if (!value) {
-      showError(inputEl, 'This field is required.');
-      return false;
+    function showError(inputEl, message) {
+      removeError(inputEl);
+      inputEl.style.border = '1px solid red';
+      const errorSpan = document.createElement('span');
+      errorSpan.className = 'field-error';
+      errorSpan.textContent = message;
+      errorSpan.style.color = 'red';
+      errorSpan.style.fontSize = '12px';
+      inputEl.parentNode.insertBefore(errorSpan, inputEl.nextSibling);
     }
 
-    if (id === 'email' && !validateEmail(value)) {
-      showError(inputEl, 'Please enter a valid email address.');
-      return false;
+    function removeError(inputEl) {
+      inputEl.style.border = '';
+      const next = inputEl.nextSibling;
+      if (next && next.className === 'field-error') {
+        next.remove();
+      }
     }
 
-    removeError(inputEl);
-    return true;
-  }
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email.trim());
+    }
 
-  // Attach validation handlers for all required fields
-  requiredFields.forEach(fieldId => {
-    const input = document.getElementById(fieldId);
-    if (!input) return;
-    input.addEventListener('blur', () => validateField(input));
-    input.addEventListener('input', () => validateField(input));
-  });
+    function validateField(inputEl) {
+      const id = inputEl.id;
+      const value = inputEl.value.trim();
 
-  // On form submit: validate all fields, concatenate origin/destination
-  document.querySelector('form').addEventListener('submit', function (event) {
-    let isValid = true;
+      if (!value) {
+        showError(inputEl, 'This field is required.');
+        return false;
+      }
 
+      if (id === 'email' && !validateEmail(value)) {
+        showError(inputEl, 'Please enter a valid email address.');
+        return false;
+      }
+
+      removeError(inputEl);
+      return true;
+    }
+
+    // Attach validation handlers for all required fields
     requiredFields.forEach(fieldId => {
       const input = document.getElementById(fieldId);
-      if (!validateField(input)) {
-        isValid = false;
-      }
+      if (!input) return;
+      input.addEventListener('blur', () => validateField(input));
+      input.addEventListener('input', () => validateField(input));
     });
 
-    // Concatenate origin/destination
-    const originCity = document.getElementById('origin-city').value.trim();
-    const destinationCity = document.getElementById('destination-city').value.trim();
-    document.getElementById('00NJ9000008ZZa7').value = `Origin: ${originCity}, Destination: ${destinationCity}`;
+    // On form submit: validate all fields, concatenate origin/destination
+    document.querySelector('form').addEventListener('submit', function (event) {
+      let isValid = true;
+      const $submitBtn = $("#submit-btn");
 
-    if (!isValid) {
-      event.preventDefault();
-    }
-  });
+      requiredFields.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (!validateField(input)) {
+          isValid = false;
+        }
+      });
 
-  // Initialize intl-tel-input and validate phone number on input
-  $(function () {
-    var $input = $("#phone");
-    var $message = $("#message");
+      // Concatenate origin/destination
+      const originCity = document.getElementById('origin-city').value.trim();
+      const destinationCity = document.getElementById('destination-city').value.trim();
+      document.getElementById('00NJ9000008ZZa7').value = `Origin: ${originCity}, Destination: ${destinationCity}`;
 
-    $input.intlTelInput({
-      formatOnDisplay: true,
-      initialCountry: "auto",
-      nationalMode: false,
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js",
-      geoIpLookup: function (callback) {
-        $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
-          var countryCode = (resp && resp.country) ? resp.country.toLowerCase() : "us";
-          callback(countryCode);
-        });
+      if (!isValid) {
+        event.preventDefault();
+        e.preventDefault();
+        $submitBtn.val("Submit"); // Revert text just in case
+        $submitBtn.prop("disabled", false);
       }
+      // Show loading state
+      $submitBtn.val("Submitting...");
+      $submitBtn.prop("disabled", true); // prevent double-click
     });
 
-    $input.on("input", function () {
-      $message.text("").removeClass("error valid");
-      var phoneNumber = $input.val().trim();
+    // Initialize intl-tel-input and validate phone number on input
+    $(function () {
+      var $input = $("#phone");
+      var $message = $("#message");
 
-      if ($input.intlTelInput("isValidNumber")) {
-        var formattedNumber = $input.intlTelInput("getNumber", intlTelInputUtils.numberFormat.INTERNATIONAL);
-        $("#message").addClass("hidden");
-        $message.addClass("valid").text("Valid phone number: " + formattedNumber);
-      } else {
-        $("#message").removeClass("hidden");
-        $message.addClass("error").text("Invalid phone number.");
-      }
-    });
+      $input.intlTelInput({
+        formatOnDisplay: true,
+        initialCountry: "auto",
+        nationalMode: false,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js",
+        geoIpLookup: function (callback) {
+          $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+            var countryCode = (resp && resp.country) ? resp.country.toLowerCase() : "us";
+            callback(countryCode);
+          });
+        }
+      });
+
+      $input.on("input", function () {
+        $message.text("").removeClass("error valid");
+        var phoneNumber = $input.val().trim();
+
+        if ($input.intlTelInput("isValidNumber")) {
+          var formattedNumber = $input.intlTelInput("getNumber", intlTelInputUtils.numberFormat.INTERNATIONAL);
+          $message.addClass("hidden");
+          $message.addClass("valid").text("Valid phone number: " + formattedNumber);
+        } else {
+          $message.removeClass("hidden");
+          $message.addClass("error").text("Invalid phone number.");
+        }
+      });
       // Prevent form submission if phone number is invalid
-    $("form").on("submit", function (e) {
+      $("form").on("submit", function (e) {
+      const $submitBtn = $("#submit-btn");
       const phoneNumber = $input.val().trim();
 
+      let valid = true;
+
+      //Validate phone number
       if (!phoneNumber || !$input.intlTelInput("isValidNumber")) {
-        e.preventDefault();
-        $("#message").removeClass("hidden");
+        valid = false;
         $message.addClass("error").text("Please enter a valid phone number.");
+      } else {
+        $message.removeClass("error").text("");
       }
+
+      //Prevent form submission if invalid
+      if (!valid) {
+        e.preventDefault();
+        e.preventDefault();
+        $submitBtn.val("Submit"); // Revert text just in case
+        $submitBtn.prop("disabled", false);
+      }
+      // Show loading state
+      $submitBtn.val("Submitting...");
+      $submitBtn.prop("disabled", true); // prevent double-click
     });
-  });
-</script>
+    });
+  </script>
 
 </body>
+
 </html>
