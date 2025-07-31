@@ -81,6 +81,7 @@
       flex-wrap: wrap;
       gap: 10px 20px;
       font-size: 13px;
+      margin-bottom: 20px;
     }
 
     .checkbox-grid label {
@@ -149,6 +150,8 @@
 
       .checkbox-grid {
         gap: 8px 15px;
+        margin-bottom: 20px; 
+        font-size: 13px
       }
 
       .checkbox-grid label {
@@ -205,7 +208,7 @@
     <label for="solutions-interested">
       <h4>Solution/s Interested In:</h4>
     </label>
-    <div id="solutions-interested" class="checkbox-wrapper checkbox-grid" style="font-size: 13px">
+    <div id="solutions-interested" class="checkbox-wrapper checkbox-grid">
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Forwarding"> Air Forwarding</label>
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Sea Forwarding"> Sea Forwarding</label>
       <label><input type="checkbox" name="00NJ9000008YnC9" value="Air Freight Imports"> Air Freight Imports</label>
@@ -220,7 +223,7 @@
     <label for="cargo-types">
       <h4>Cargo Types:</h4>
     </label>
-    <div id="cargo-types" style="margin-bottom: 20px; font-size: 13px" class="checkbox-wrapper checkbox-grid">
+    <div id="cargo-types" class="checkbox-wrapper checkbox-grid">
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Break Bulk Cargo"> Break Bulk Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Containerized Cargo"> Containerized Cargo</label>
       <label><input type="checkbox" name="00NJ9000008YnC4" value="Dry Bulk Cargo"> Dry Bulk Cargo</label>
@@ -262,7 +265,7 @@
 
   <!-- intl-tel-input -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/utils.js"></script> -->
   <script>
     const requiredFields = ['first_name', 'last_name', 'email', 'company', 'description', 'destination-city', 'origin-city', '00NJ9000006zuRD'];
 
