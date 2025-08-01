@@ -188,7 +188,7 @@
       type="text" />
 
     <label for="phone">Phone</label><input id="phone" maxlength="40"
-      placeholder="Enter your phone number e.g. +271101234123" name="phone" size="20" type="text" />
+      placeholder="Enter your phone number e.g. +271101234123" name="phone" id="phone"size="20" type="text" />
     <span id="message"></span>
     <!--<label for="title">Job Title</label><input  id="title" maxlength="40" name="title" size="20" type="text" /><br> -->
 
@@ -415,10 +415,9 @@
 
         //Prevent form submission if invalid
         if (!valid) {
-            e.preventDefault();
-            e.preventDefault();
-        $submitBtn.val("Submit"); // Revert text just in case
-        $submitBtn.prop("disabled", false);
+          e.preventDefault();
+          $submitBtn.val("Submit"); // Revert text just in case
+          $submitBtn.prop("disabled", false);
           }
           // Show loading state
           $submitBtn.val("Submitting...");
